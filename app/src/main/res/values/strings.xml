@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Walking AR</string>
+    <string name="xAxis">X Axis:</string>
+    <string name="yAxis">Y Axis:</string>
+    <string name="zAxis">Z Axis:</string>
+    <string name="heading">Heading:</string>
+    <string name="pitch">Pitch:</string>
+    <string name="roll">Roll:</string>
+    <string name="altitude">Altitude:</string>
+    <string name="longitude">Longitude:</string>
+    <string name="latitude">Latitude:</string>
+    <string name="empty">0.0</string>
+    <string name="permissions_messages">In order to use this app you need to grant permissions - without them app will not work! Please, give this app all needed permissions.</string>
+    <string name="permissions">Permissions</string>
+</resources>

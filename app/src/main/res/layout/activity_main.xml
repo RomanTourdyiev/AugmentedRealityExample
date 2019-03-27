@@ -1,0 +1,76 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <SurfaceView
+        android:id="@+id/camera_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"/>
+
+    <FrameLayout
+        android:id="@+id/ar_views_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="-1000dp"
+        android:layout_marginTop="-1000dp"
+        android:layout_marginRight="-1000dp"
+        android:layout_marginBottom="-1000dp">
+
+    </FrameLayout>
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/google_map_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white_transparent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/medium_margin"
+            android:src="@drawable/ic_diagnostics_24dp"/>
+
+        <TextView
+            android:id="@+id/debug_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/medium_margin"
+            android:textColor="@android:color/black"
+            tools:text="sdfsdf\nsdfsd"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/medium_margin"
+            android:background="@android:color/black"/>
+
+        <TextView
+            android:id="@+id/pois"
+            android:layout_width="wrap_content"
+            android:textColor="@android:color/black"
+            android:text="POIs: "
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/medium_margin"
+            android:background="@android:color/black"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

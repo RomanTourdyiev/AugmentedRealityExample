@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/marker_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
+        app:cardCornerRadius="@dimen/small_marker_padding"
+        app:cardElevation="@dimen/medium_margin"
+        app:cardUseCompatPadding="true"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/small_marker_padding"
+            android:paddingTop="@dimen/xsmall_marker_padding"
+            android:paddingRight="@dimen/small_marker_padding"
+            android:paddingBottom="@dimen/xsmall_marker_padding">
+
+            <ImageView
+                android:layout_width="@dimen/marker_width"
+                android:layout_height="@dimen/marker_width"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_location_on_black_56dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/marker_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/title_text_size"
+                    android:textStyle="bold"
+                    tools:text="TITLE"/>
+
+                <TextView
+                    android:id="@+id/marker_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/medium_text_size"
+                    tools:text="1000000m"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/marker_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="@dimen/small_marker_padding"
+        app:cardElevation="@dimen/medium_margin"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/medium_marker_padding">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/small_marker_padding"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/title_text_size"
+                android:textStyle="bold"
+                tools:text="TITLE"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/card_corner_radius_margin">
+
+                <TextView
+                    android:id="@+id/discount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/medium_marker_padding"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="@dimen/medium_text_size"
+                    android:textStyle="bold"
+                    tools:text="70%\ndiscount"/>
+
+                <ImageView
+                    android:id="@+id/icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/data_object_image_width"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/mnfktr"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bckgnd_marker_rounded_rect"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:drawableStart="@drawable/ic_location_on_black_56dp"
+                android:drawableLeft="@drawable/ic_location_on_black_56dp"
+                android:drawablePadding="@dimen/small_marker_padding"
+                android:paddingLeft="@dimen/small_marker_padding"
+                android:paddingTop="@dimen/xsmall_marker_padding"
+                android:paddingRight="@dimen/small_marker_padding"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/xsmall_marker_padding"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/medium_text_size"
+                tools:text="100m"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
