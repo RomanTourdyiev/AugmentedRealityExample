@@ -10,6 +10,8 @@ import java.util.concurrent.TimeUnit;
 public class Config {
     public final static String TAG = "walkingAR";
     public final static float LOCATION_THRESHOLD = 50f;
+    public final static int LOCATION_RADIUS = 3000;
+    public final static int LOCATION_RADIUS_CHANGES = 50;
     public final static long GPS_FREQUENCY = TimeUnit.SECONDS.toMillis(1);
     public final static int GPS_MIN_DISTANCE = 1;
     public final static int MAX_DISTANCE = 150;

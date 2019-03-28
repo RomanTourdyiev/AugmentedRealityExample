@@ -48,6 +48,8 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -100,6 +102,7 @@ public class ActivityMain extends AppCompatActivity
     private float scale;
     private int orientation = -1;
     private DataObject dataObject;
+    private List<Location> ARObjects = new ArrayList<>();
 
 
     /*----------------------------------------------------------------------*/
@@ -118,9 +121,12 @@ public class ActivityMain extends AppCompatActivity
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
+
     /*----------------------------------------------------------------------*/
     @Override
     public void onLocationChanged(Location location) {
+        if (currentLocation.distanceTo(location) < LOCATION_RADIUS_CHANGES)
+            initARObjects();
         currentLocation = location;
     }
 
@@ -383,7 +389,7 @@ public class ActivityMain extends AppCompatActivity
 
         gmapView.onCreate(null);
 
-        pois.setText("POIS: " + dataObject.getDataObjects().size());
+        pois.setText("POIS: " + ARObjects.size());
     }
 
     private void initMap() {
@@ -432,8 +438,8 @@ public class ActivityMain extends AppCompatActivity
                 map.getUiSettings().setZoomControlsEnabled(true);
                 map.getUiSettings().setCompassEnabled(true);
 
-                for (int i = 0; i < dataObject.getDataObjects().size(); i++) {
-                    Location location = dataObject.getDataObjects().get(i);
+                for (int i = 0; i < ARObjects.size(); i++) {
+                    Location location = ARObjects.get(i);
                     LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                     builder.include(latLng);
                     Marker marker = mMap.addMarker(new MarkerOptions().position(latLng));
@@ -499,7 +505,14 @@ public class ActivityMain extends AppCompatActivity
 
     private void initARObjects() {
         ARViewsContainer.removeAllViews();
-        for (Location dataObject : dataObject.getDataObjects()) {
+
+        ARObjects.clear();
+        for (Location location : dataObject.getDataObjects()) {
+            if (currentLocation.distanceTo(location) <= LOCATION_RADIUS)
+                ARObjects.add(location);
+        }
+
+        for (Location dataObject : ARObjects) {
             View view = getLayoutInflater().inflate(R.layout.layout_data_object, null);
 
             TextView title = view.findViewById(R.id.title);
@@ -539,11 +552,11 @@ public class ActivityMain extends AppCompatActivity
         float angleX = -currentOrientation[2] - 90;
         float angleZ = -orientation - 90;
 
-        for (int i = 0; i < dataObject.getDataObjects().size(); i++) {
+        for (int i = 0; i < ARObjects.size(); i++) {
 
             View view = ARViewsContainer.getChildAt(i);
 
-            Location location = dataObject.getDataObjects().get(i);
+            Location location = ARObjects.get(i);
             float distance = currentLocation.distanceTo(location);
             float bearing = (currentLocation.bearingTo(location) + 360) % 360;
             float angleY = angleWithNorth - bearing;
@@ -595,7 +608,6 @@ public class ActivityMain extends AppCompatActivity
         angleWithNorth = (currentOrientation[0] + 360 + 90) % 360;
         updateCamera(angleWithNorth);
     }
-
 
     public void updateCamera(float bearing) {
         if (canRotate) {

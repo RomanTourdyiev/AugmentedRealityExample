@@ -20,15 +20,13 @@ public class DataObject {
     public DataObject(Context context) {
         this.context = context;
 
-//        locations.add(createDataObject(50.920916, 34.834163, "EpicentrK", "70%", R.drawable.epicentrk));
-//        locations.add(createDataObject(50.904100, 34.804956, "Manufactura", "70%", R.drawable.mnfktr));
-//        locations.add(createDataObject(50.902592, 34.814539, "Glamour", "70%", R.drawable.glamour));
-//        locations.add(createDataObject(50.882803, 34.777157, "Church of the Holy Martyr Valentina", "", R.drawable.church));
-//        locations.add(createDataObject(50.881798, 34.777790, "СНАУ", "", R.drawable.snau));
-//        locations.add(createDataObject(50.916217, 34.825997, "B-Tone", "", R.drawable.btone));
-//        locations.add(createDataObject(50.915243, 34.808009, "Kazka Fortress", "", R.drawable.park_castle));
-
-
+        locations.add(createDataObject(50.920916, 34.834163, "EpicentrK", "70%", R.drawable.epicentrk));
+        locations.add(createDataObject(50.904100, 34.804956, "Manufactura", "70%", R.drawable.mnfktr));
+        locations.add(createDataObject(50.902592, 34.814539, "Glamour", "70%", R.drawable.glamour));
+        locations.add(createDataObject(50.882803, 34.777157, "Church of the Holy Martyr Valentina", "", R.drawable.church));
+        locations.add(createDataObject(50.881798, 34.777790, "СНАУ", "", R.drawable.snau));
+        locations.add(createDataObject(50.916217, 34.825997, "B-Tone", "", R.drawable.btone));
+        locations.add(createDataObject(50.915243, 34.808009, "Kazka Fortress", "", R.drawable.park_castle));
         locations.add(createDataObject(50.448175, 30.425661, "BMW Бавария Киев", "80%", R.drawable.bmw));
         locations.add(createDataObject(50.447644, 30.422396, "Workshop фитнесс клуб", "10%", R.drawable.work));
         locations.add(createDataObject(50.449009, 30.424052, "ТОВ «Гладіус Сервіс»", "10%", R.drawable.gladius));
