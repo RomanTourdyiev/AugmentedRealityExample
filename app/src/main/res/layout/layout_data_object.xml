@@ -14,8 +14,7 @@
         app:cardBackgroundColor="@color/colorPrimaryDark"
         app:cardCornerRadius="@dimen/small_marker_padding"
         app:cardElevation="@dimen/medium_margin"
-        app:cardUseCompatPadding="true"
-        tools:visibility="visible">
+        app:cardUseCompatPadding="true">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -86,7 +85,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/title_text_size"
                 android:textStyle="bold"
-                tools:text="TITLE"/>
+                tools:text="B-Tone"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -110,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/data_object_image_width"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/mnfktr"/>
+                    android:src="@drawable/btone"/>
 
             </LinearLayout>
 
@@ -130,7 +129,7 @@
                 android:paddingBottom="@dimen/xsmall_marker_padding"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/medium_text_size"
-                tools:text="100m"/>
+                tools:text="20m"/>
 
         </LinearLayout>
 

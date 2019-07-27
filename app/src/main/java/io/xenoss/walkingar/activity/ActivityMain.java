@@ -125,9 +125,10 @@ public class ActivityMain extends AppCompatActivity
     /*----------------------------------------------------------------------*/
     @Override
     public void onLocationChanged(Location location) {
+        currentLocation = location;
         if (currentLocation.distanceTo(location) < LOCATION_RADIUS_CHANGES)
             initARObjects();
-        currentLocation = location;
+
     }
 
     @Override
@@ -224,6 +225,7 @@ public class ActivityMain extends AppCompatActivity
             previewHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
             camera = Camera.open();
 
+            initARObjects();
             initMap();
         }
 
@@ -438,6 +440,7 @@ public class ActivityMain extends AppCompatActivity
                 map.getUiSettings().setZoomControlsEnabled(true);
                 map.getUiSettings().setCompassEnabled(true);
 
+                Log.d("showMarkers", ARObjects.size()+"");
                 for (int i = 0; i < ARObjects.size(); i++) {
                     Location location = ARObjects.get(i);
                     LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
@@ -448,13 +451,15 @@ public class ActivityMain extends AppCompatActivity
                     marker.setTitle(location.getExtras().getString(TITLE));
                     marker.setSnippet(location.getExtras().getString(DISCOUNT));
                     marker.setTag(location);
+                    Log.d("showMarkers", location.getLatitude()+"");
                 }
 
-                mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(
-                        builder.build(),
-                        getResources().getDisplayMetrics().widthPixels,
-                        getResources().getDisplayMetrics().heightPixels,
-                        getResources().getDimensionPixelSize(R.dimen.double_action_bar_height)));
+                if (ARObjects.size() > 0)
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(
+                            builder.build(),
+                            getResources().getDisplayMetrics().widthPixels,
+                            getResources().getDisplayMetrics().heightPixels,
+                            getResources().getDimensionPixelSize(R.dimen.double_action_bar_height)));
 //
                 map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                     @Override
@@ -506,9 +511,12 @@ public class ActivityMain extends AppCompatActivity
     private void initARObjects() {
         ARViewsContainer.removeAllViews();
 
+        if (currentLocation == null) return;
+
         ARObjects.clear();
+
         for (Location location : dataObject.getDataObjects()) {
-            if (currentLocation.distanceTo(location) <= LOCATION_RADIUS)
+//            if (currentLocation.distanceTo(location) <= LOCATION_RADIUS)
                 ARObjects.add(location);
         }
 
@@ -610,6 +618,7 @@ public class ActivityMain extends AppCompatActivity
     }
 
     public void updateCamera(float bearing) {
+        if (currentLocation == null) return;
         if (canRotate) {
             CameraPosition currentPlace = new CameraPosition.Builder()
                     .target(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()))
