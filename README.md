@@ -4,4 +4,6 @@ AR app showing POI markers on both map and camera (while user holds device flat 
 
 <img src="https://github.com/RomanTourdyiev/AugmentedRealityExample/blob/master/Screenshot_2019-07-27-10-06-33.jpg" width=600>
 
-<img src="https://github.com/RomanTourdyiev/AugmentedRealityExample/blob/master/Screenshot_2019-07-27-10-06-57.jpg" width=600>
+<img src="https://github.com/RomanTourdyiev/AugmentedRealityExample/blob/master/Screenshot_2019-07-27-11-09-11.jpg" width=600>
+
+<img src="https://github.com/RomanTourdyiev/AugmentedRealityExample/blob/master/Screenshot_2019-07-27-11-18-33.jpg" width=600>
