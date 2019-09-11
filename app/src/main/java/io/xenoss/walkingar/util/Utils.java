@@ -5,12 +5,14 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
-import android.hardware.SensorManager;
-import android.support.annotation.DrawableRes;
-import android.support.v4.content.ContextCompat;
+
+import androidx.annotation.DrawableRes;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+
+import java.util.Locale;
 
 import static io.xenoss.walkingar.Config.*;
 
@@ -32,8 +34,9 @@ public class Utils {
         return distanceFormatted;
     }
 
-    public static String format(float values[]) {
-        return String.format("Z%1$.1f\t\tX%2$.1f\t\tY%3$.1f", values[0], values[1], values[2]);
+    public static String format(float[] values) {
+        //PP LocalUS to conserve decimal dot
+        return String.format(Locale.US,"Z%1$.1f\t\tX%2$.1f\t\tY%3$.1f", values[0], values[1], values[2]);
     }
 
     public static Camera.Size getBestPreviewSize(int width, int height, Camera.Parameters parameters) {

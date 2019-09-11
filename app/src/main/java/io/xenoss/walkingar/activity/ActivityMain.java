@@ -14,13 +14,12 @@ import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.location.LocationProvider;
 import android.os.Build;
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.OrientationEventListener;
@@ -30,18 +29,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
@@ -515,11 +510,13 @@ public class ActivityMain extends AppCompatActivity
 
         ARObjects.clear();
 
-        for (Location location : dataObject.getDataObjects()) {
-//            if (currentLocation.distanceTo(location) <= LOCATION_RADIUS)
-                ARObjects.add(location);
-        }
+        ARObjects.addAll(dataObject.getDataObjects()); //PP Cosmetic
 
+/*        for (Location location : dataObject.getDataObjects()) {
+//            if (currentLocation.distanceTo(location) <= LOCATION_RADIUS)
+            ARObjects.add(location);
+        }
+*/
         for (Location dataObject : ARObjects) {
             View view = getLayoutInflater().inflate(R.layout.layout_data_object, null);
 
