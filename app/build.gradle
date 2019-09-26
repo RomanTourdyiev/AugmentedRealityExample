@@ -1,9 +1,11 @@
 apply plugin: 'com.android.application'
 
-def VUFORIA_SDK_DIR = '../../'
+def VUFORIA_SDK_DIR = '../../../vuforia-sdk-android-8-3-8/'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
+    buildToolsVersion = '29.0.2'
+
     sourceSets.main {
         jni.srcDirs = []
         jniLibs.srcDir "$VUFORIA_SDK_DIR/build/lib/"
@@ -11,10 +13,10 @@ android {
     defaultConfig {
         applicationId "io.xenoss.walkingar"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndk {
             // Default ABI list for this app, can be over-ridden by providing an abiList property
             // e.g. gradle -PabiList=x86 clean assembleDebug
@@ -34,20 +36,33 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support:design:28.0.0'
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.0.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'com.google.android.gms:play-services-location:15.0.1'
-    implementation 'com.google.maps.android:android-maps-utils:0.5+'
-    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-basement:17.1.0'
+    implementation 'com.google.android.gms:play-services-base:17.1.0'
+    implementation 'com.google.android.gms:play-services-gcm:17.0.0'
+    //    implementation 'com.google.maps.android:android-maps-utils:0.5'
+//    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation name:'maps-sdk-3.0.0-beta', ext:'aar'
+    implementation 'com.google.maps.android:android-maps-utils-sdk-v3-compat:0.1'
 
     implementation files("$VUFORIA_SDK_DIR/build/java/Vuforia/Vuforia.jar")
-    // ARCore library
-    implementation 'com.google.ar:core:1.6.0'
+    // ARCore library NOT USED NOT WORKING
+    implementation 'com.google.ar:core:1.11.0'
+
+    // Use the most recent version of CameraX TODO
+    implementation "androidx.camera:camera-core:1.0.0-alpha05"
+    implementation "androidx.camera:camera-camera2:1.0.0-alpha05"
 }

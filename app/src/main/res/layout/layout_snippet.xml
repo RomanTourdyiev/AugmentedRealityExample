@@ -56,7 +56,7 @@
             android:background="@drawable/bckgnd_rounded_rect"
             android:backgroundTint="@color/colorPrimaryDark"
             android:drawableStart="@drawable/ic_location_on_white_18dp"
-            android:drawableLeft="@drawable/ic_location_on_white_18dp"
+
             android:drawablePadding="@dimen/medium_margin"
             android:paddingLeft="@dimen/medium_margin"
             android:paddingTop="@dimen/small_margin"
